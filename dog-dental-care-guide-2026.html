@@ -56,8 +56,10 @@
     padding: 1.4rem; margin: 1.5rem 0; display: grid; grid-template-columns: 100px 1fr; gap: 1.2rem; align-items: center;
   }
   .pick-thumb {
-    width: 100px; height: 100px; border-radius: var(--radius-sm); background: var(--accent-light);
-    display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
+    width: 90px; height: 90px; border-radius: 50%; justify-self: center;
+    background: linear-gradient(135deg, #FDF0EA 0%, #F5E6D8 100%);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 16px rgba(232,117,74,.18); border: 3px solid #fff;
   }
   .pick-label { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
   .pick-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; }
@@ -132,47 +134,82 @@
 
   <h3>Best overall enzymatic toothpaste</h3>
   <div class="pick-card">
-    <div class="pick-thumb">🦷</div>
+    <div class="pick-thumb">
+      <svg viewBox="0 0 64 64" width="46" height="46">
+        <rect x="22" y="9" width="20" height="10" rx="3" fill="#E8754A"/>
+        <path d="M20 19 L44 19 L40 50 Q32 56 24 50 Z" fill="#FAFAF8" stroke="#E8754A" stroke-width="2.6"/>
+        <path d="M24 28 Q32 24 40 28" stroke="#E8754A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        <path d="M25 37 Q32 33.5 39 37" stroke="#E8754A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
     <div>
       <span class="pick-label">Popular pick</span>
       <p class="pick-name">Dual-Enzyme Poultry-Flavor Dog Toothpaste</p>
       <p class="pick-desc">A dual-enzyme formula from a brand widely used in this category, designed to reduce plaque and tartar buildup. Poultry flavor makes brushing time far less of a fight.</p>
-      <a href="#" class="pick-cta">View on Amazon →</a>
+      <a href="https://amzn.to/4w3yLXD" target="_blank" rel="nofollow sponsored noopener" class="pick-cta">View on Amazon →</a>
     </div>
   </div>
   <p>Dual-enzyme formulas like this one are a common starting point in this category, mainly because the enzymes keep working between brushings, not just during them. The main complaint owners have is that the tube can crumple with repeated squeezing &mdash; a minor annoyance, not a performance issue.</p>
 
   <h3>Best for dogs who won't tolerate brushing</h3>
   <div class="pick-card">
-    <div class="pick-thumb">🧴</div>
+    <div class="pick-thumb">
+      <svg viewBox="0 0 64 64" width="46" height="46">
+        <rect x="25" y="9" width="14" height="8" rx="2" fill="#E8754A"/>
+        <path d="M23 17 L41 17 L39 51 Q32 56 25 51 Z" fill="#FAFAF8" stroke="#E8754A" stroke-width="2.6"/>
+        <circle cx="32" cy="33" r="6" fill="#E8754A" opacity="0.85"/>
+        <path d="M32 33 Q35 40 32 45" stroke="#E8754A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
     <div>
       <span class="pick-label">No-brush option</span>
       <p class="pick-name">Enzymatic Dental Gel (No Brushing Required)</p>
       <p class="pick-desc">Applied directly with a finger, this gel uses enzymes to break down plaque without needing to scrub. A good option for dogs with sensitive gums or low tolerance for a toothbrush.</p>
-      <a href="#" class="pick-cta">View on Amazon →</a>
+      <a href="https://amzn.to/44st6yB" target="_blank" rel="nofollow sponsored noopener" class="pick-cta">View on Amazon →</a>
     </div>
   </div>
   <p>If brushing time turns into a wrestling match in your house, this style of product removes that barrier entirely. It's not quite as thorough as brushing with toothpaste, but it's far better than skipping dental care altogether.</p>
 
   <h3>Best toothbrush and toothpaste starter kit</h3>
   <div class="pick-card">
-    <div class="pick-thumb">🪥</div>
+    <div class="pick-thumb">
+      <svg viewBox="0 0 64 64" width="46" height="46">
+        <rect x="10" y="27" width="28" height="8" rx="4" fill="#E8754A"/>
+        <rect x="8" y="19" width="15" height="11" rx="3" fill="#FAFAF8" stroke="#E8754A" stroke-width="2.4"/>
+        <g stroke="#E8754A" stroke-width="2" stroke-linecap="round">
+          <line x1="11.5" y1="21" x2="11.5" y2="28"/>
+          <line x1="15.5" y1="21" x2="15.5" y2="28"/>
+          <line x1="19.5" y1="21" x2="19.5" y2="28"/>
+        </g>
+        <rect x="42" y="13" width="13" height="9" rx="2.5" fill="#E8754A"/>
+        <path d="M40.5 22 L56.5 22 L54.5 50 Q48.5 55 42.5 50 Z" fill="#FAFAF8" stroke="#E8754A" stroke-width="2.4"/>
+      </svg>
+    </div>
     <div>
       <span class="pick-label">Best for beginners</span>
       <p class="pick-name">Dog Toothbrush &amp; Enzymatic Toothpaste Kit</p>
       <p class="pick-desc">A complete starter kit pairing a dog-sized toothbrush with enzymatic toothpaste and a quick-start dental care guide &mdash; ideal if you're building the habit for the first time.</p>
-      <a href="#" class="pick-cta">View on Amazon →</a>
+      <a href="https://amzn.to/4aj2hjZ" target="_blank" rel="nofollow sponsored noopener" class="pick-cta">View on Amazon →</a>
     </div>
   </div>
 
   <h3>Best multi-pet household option</h3>
   <div class="pick-card">
-    <div class="pick-thumb">🐾</div>
+    <div class="pick-thumb">
+      <svg viewBox="0 0 64 64" width="46" height="46">
+        <ellipse cx="32" cy="39" rx="14" ry="11" fill="#E8754A"/>
+        <circle cx="17" cy="25" r="6" fill="#E8754A"/>
+        <circle cx="30" cy="18" r="6.5" fill="#E8754A"/>
+        <circle cx="44" cy="20" r="6" fill="#E8754A"/>
+        <circle cx="52" cy="31" r="5.5" fill="#E8754A"/>
+        <path d="M27 36 L31.5 45 L36 36 Q31.5 33 27 36 Z" fill="#FAFAF8"/>
+      </svg>
+    </div>
     <div>
       <span class="pick-label">Cat &amp; dog safe</span>
       <p class="pick-name">Triple-Enzyme Toothpaste (Dogs &amp; Cats)</p>
       <p class="pick-desc">A smooth, mild-flavored formula safe for both dogs and cats, which simplifies dental care if you're managing more than one pet's routine.</p>
-      <a href="#" class="pick-cta">View on Amazon →</a>
+      <a href="https://amzn.to/4g5hmt0" target="_blank" rel="nofollow sponsored noopener" class="pick-cta">View on Amazon →</a>
     </div>
   </div>
 
