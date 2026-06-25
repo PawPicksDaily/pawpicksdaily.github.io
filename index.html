@@ -64,6 +64,7 @@
     display: flex;
     gap: 2rem;
     list-style: none;
+    align-items: center;
   }
 
   .nav-links a {
@@ -215,8 +216,24 @@
     margin-bottom: 1rem;
   }
 
-  .stars { color: #F5A623; font-size: 0.9rem; letter-spacing: 1px; }
-  .rating-count { font-size: 0.8rem; color: var(--muted); }
+  .hero-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .highlight-chip {
+    background: var(--accent-light);
+    color: #8a4426;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
 
   .amazon-btn {
     display: block;
@@ -338,18 +355,123 @@
     box-shadow: 0 8px 28px rgba(0,0,0,.08);
   }
 
+  .coming-soon-card {
+    background: var(--accent-light);
+    border: 1.5px dashed #E3B79E;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.2rem 1.5rem;
+    min-height: 100%;
+  }
+
+  .coming-soon-card svg { margin-bottom: 0.9rem; opacity: .8; }
+
+  .coming-soon-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .coming-soon-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
   .article-img {
     width: 100%;
     height: 180px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 3.5rem;
+    gap: 1.1rem;
+    padding: 0 1.7rem;
+    position: relative;
+    overflow: hidden;
   }
 
-  .article-img.grooming { background: #FDF0EA; }
-  .article-img.toys { background: #EDF7F0; }
-  .article-img.dental { background: #EDF2FB; }
+  .article-img::before {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    right: -75px;
+    top: -75px;
+    background: rgba(255,255,255,.4);
+  }
+
+  .article-img::after {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    left: -55px;
+    bottom: -60px;
+    background: rgba(255,255,255,.28);
+  }
+
+  .article-img svg { position: relative; z-index: 2; }
+
+  .thumb-number {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 4.1rem;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: #E8754A;
+    text-shadow: 4px 4px 0 rgba(255,255,255,.55);
+    position: relative;
+    z-index: 2;
+  }
+
+  .thumb-divider {
+    width: 2px;
+    height: 44px;
+    background: rgba(232,117,74,.35);
+    border-radius: 2px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .thumb-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    position: relative;
+    z-index: 2;
+  }
+
+  .thumb-icon {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+  }
+
+  .article-img.grooming {
+    background: linear-gradient(135deg, #FDF0EA 0%, #F6D9C1 100%);
+  }
+  .article-img.grooming .thumb-label { color: #8a4426; }
+
+  .article-img.toys {
+    background: linear-gradient(135deg, #EDF7F0 0%, #CFEBD9 100%);
+  }
+  .article-img.toys .thumb-label { color: #2f5e42; }
+  .article-img.toys .thumb-number { text-shadow: 4px 4px 0 rgba(255,255,255,.6); }
+
+  .article-img.dental {
+    background: linear-gradient(135deg, #EDF2FB 0%, #D2E0F7 100%);
+  }
+  .article-img.dental .thumb-label { color: #2c4a78; }
 
   .article-body { padding: 1.25rem; }
 
@@ -611,11 +733,11 @@
   <ul class="nav-links">
     <li><a href="#reviews">Reviews</a></li>
     <li><a href="#picks">Top Picks</a></li>
-    <li><a href="#grooming">Grooming</a></li>
-    <li><a href="#toys">Toys</a></li>
+    <li><a href="best-dog-grooming-brushes-2026.html">Grooming</a></li>
+    <li><a href="indestructible-dog-toys-2026.html">Toys</a></li>
     <li><a href="about.html">About</a></li>
+    <li><a href="#picks" class="nav-cta">Shop Picks</a></li>
   </ul>
-  <a href="#picks" class="nav-links"><a href="#picks" class="nav-cta">Shop Picks</a></a>
 </nav>
 
 <!-- HERO -->
@@ -633,16 +755,18 @@
     <div class="hero-visual">
       <div class="hero-card">
         <div class="hero-card-badge">⭐ Editor's pick</div>
-        <div class="product-img-placeholder">🛁</div>
-        <p class="product-title">Best Grooming Brush 2026</p>
-        <p class="product-subtitle">Highly rated for double-coated breeds</p>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">4.8 · 12,400 reviews</span>
+        <div class="product-img-placeholder">
+          <svg viewBox="0 0 64 64" width="92" height="92"><rect x="26" y="33" width="12" height="23" rx="6" fill="#E8754A"/><rect x="13" y="13" width="38" height="11" rx="5.5" fill="#E8754A"/><g stroke="#E8754A" stroke-width="3.4" stroke-linecap="round"><line x1="19" y1="24" x2="19" y2="35"/><line x1="26" y1="24" x2="26" y2="37"/><line x1="33" y1="24" x2="33" y2="38"/><line x1="40" y1="24" x2="40" y2="37"/><line x1="46" y1="24" x2="46" y2="35"/></g></svg>
         </div>
-        <a href="#" class="amazon-btn">View on Amazon →</a>
+        <p class="product-title">Stainless Steel Undercoat Deshedding Tool</p>
+        <p class="product-subtitle">The top pick for double-coated, heavy-shedding breeds</p>
+        <div class="hero-highlights">
+          <span class="highlight-chip">🐾 Standard pick for double coats</span>
+          <span class="highlight-chip">🗓️ Use 1–2x/week in shedding season</span>
+        </div>
+        <a href="https://amzn.to/3QvQIiH" target="_blank" rel="nofollow sponsored noopener" class="amazon-btn">View on Amazon →</a>
       </div>
-      <div class="floating-tag">🐶 Also great for cats</div>
+      <div class="floating-tag">🐾 Built for double coats</div>
     </div>
   </div>
 </section>
@@ -670,19 +794,29 @@
   </div>
   <div class="article-grid">
     <a href="best-dog-grooming-brushes-2026.html" class="article-card">
-      <div class="article-img grooming">🛁</div>
+      <div class="article-img grooming">
+        <svg class="thumb-icon" viewBox="0 0 64 64" width="30" height="30"><rect x="26" y="33" width="12" height="23" rx="6" fill="#E8754A"/><rect x="13" y="13" width="38" height="11" rx="5.5" fill="#E8754A"/><g stroke="#E8754A" stroke-width="3.4" stroke-linecap="round"><line x1="19" y1="24" x2="19" y2="35"/><line x1="26" y1="24" x2="26" y2="37"/><line x1="33" y1="24" x2="33" y2="38"/><line x1="40" y1="24" x2="40" y2="37"/><line x1="46" y1="24" x2="46" y2="35"/></g></svg>
+        <span class="thumb-number">4</span>
+        <span class="thumb-divider"></span>
+        <span class="thumb-label">Grooming<br>picks</span>
+      </div>
       <div class="article-body">
         <p class="article-cat">Grooming</p>
-        <p class="article-title">7 best dog grooming brushes in 2026 — matched to coat type</p>
+        <p class="article-title">4 best dog grooming brushes in 2026 — matched to coat type</p>
         <div class="article-meta">
-          <span>5 min read</span>
+          <span>7 min read</span>
           <span>·</span>
           <span>Amazon picks included</span>
         </div>
       </div>
     </a>
     <a href="indestructible-dog-toys-2026.html" class="article-card">
-      <div class="article-img toys">🧸</div>
+      <div class="article-img toys">
+        <svg class="thumb-icon" viewBox="0 0 64 64" width="26" height="26"><circle cx="32" cy="47" r="15" fill="#E8754A"/><circle cx="32" cy="29" r="11" fill="#E8754A"/><circle cx="32" cy="15" r="7.5" fill="#E8754A"/><ellipse cx="32" cy="39" rx="10.5" ry="4" fill="#EDF7F0"/><ellipse cx="32" cy="22" rx="7.5" ry="3" fill="#EDF7F0"/></svg>
+        <span class="thumb-number">5</span>
+        <span class="thumb-divider"></span>
+        <span class="thumb-label">Toys<br>tested</span>
+      </div>
       <div class="article-body">
         <p class="article-cat">Toys</p>
         <p class="article-title">5 indestructible dog toys for aggressive chewers (2026)</p>
@@ -694,7 +828,12 @@
       </div>
     </a>
     <a href="dog-dental-care-guide-2026.html" class="article-card">
-      <div class="article-img dental">🦷</div>
+      <div class="article-img dental">
+        <svg class="thumb-icon" viewBox="0 0 64 64" width="28" height="28"><rect x="22" y="9" width="20" height="10" rx="3" fill="#E8754A"/><path d="M20 19 L44 19 L40 50 Q32 56 24 50 Z" fill="#EDF2FB" stroke="#E8754A" stroke-width="2.6"/><path d="M24 28 Q32 24 40 28" stroke="#E8754A" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M25 37 Q32 33.5 39 37" stroke="#E8754A" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>
+        <span class="thumb-number">4</span>
+        <span class="thumb-divider"></span>
+        <span class="thumb-label">Enzymatic<br>products</span>
+      </div>
       <div class="article-body">
         <p class="article-cat">Dental care</p>
         <p class="article-title">Dog dental care guide — 4 enzymatic products worth trying</p>
@@ -705,6 +844,11 @@
         </div>
       </div>
     </a>
+    <div class="article-card coming-soon-card">
+      <svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="22" fill="none" stroke="#E8754A" stroke-width="3"/><path d="M32 20 L32 32 L40 38" stroke="#E8754A" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="2.4" fill="#E8754A"/></svg>
+      <p class="coming-soon-title">More reviews coming soon</p>
+      <p class="coming-soon-sub">We're just getting started — supplements, senior pet care & more new picks every week.</p>
+    </div>
   </div>
 </section>
 
@@ -718,39 +862,39 @@
   </div>
   <div class="product-grid">
     <div class="product-card">
-      <div class="product-thumb a">🛁</div>
+      <div class="product-thumb a"><svg viewBox="0 0 64 64" width="64" height="64"><rect x="13" y="9" width="38" height="25" rx="8" fill="#FAFAF8" stroke="#E8754A" stroke-width="2.6"/><g fill="#E8754A"><circle cx="22" cy="17" r="1.8"/><circle cx="29.3" cy="17" r="1.8"/><circle cx="36.6" cy="17" r="1.8"/><circle cx="43.9" cy="17" r="1.8"/><circle cx="22" cy="24" r="1.8"/><circle cx="29.3" cy="24" r="1.8"/><circle cx="36.6" cy="24" r="1.8"/><circle cx="43.9" cy="24" r="1.8"/></g><rect x="26" y="34" width="11" height="22" rx="5.5" fill="#E8754A"/><circle cx="31.5" cy="43" r="2.6" fill="#FAFAF8"/></svg></div>
       <div class="product-body">
-        <span class="product-badge">Best grooming</span>
+        <span class="product-badge">Most convenient</span>
         <p class="product-name">Self-Cleaning Slicker Brush for Dogs & Cats</p>
         <p class="product-price">$24.99 <small>on Amazon</small></p>
-        <a href="#" class="product-cta">View on Amazon →</a>
+        <a href="https://amzn.to/4uU3xBv" target="_blank" rel="nofollow sponsored noopener" class="product-cta">View on Amazon →</a>
       </div>
     </div>
     <div class="product-card">
-      <div class="product-thumb b">🧸</div>
+      <div class="product-thumb b"><svg viewBox="0 0 64 64" width="62" height="62"><circle cx="32" cy="47" r="15" fill="#E8754A"/><circle cx="32" cy="29" r="11" fill="#E8754A"/><circle cx="32" cy="15" r="7.5" fill="#E8754A"/><ellipse cx="32" cy="39" rx="10.5" ry="4" fill="#EDF7F0"/><ellipse cx="32" cy="22" rx="7.5" ry="3" fill="#EDF7F0"/></svg></div>
       <div class="product-body">
         <span class="product-badge">Best toy</span>
-        <p class="product-name">KONG Classic Dog Toy — Chew & Treat Dispenser</p>
+        <p class="product-name">Extreme-Duty Rubber Chew Toy</p>
         <p class="product-price">$14.99 <small>on Amazon</small></p>
-        <a href="#" class="product-cta">View on Amazon →</a>
+        <a href="https://amzn.to/4g5eLzq" target="_blank" rel="nofollow sponsored noopener" class="product-cta">View on Amazon →</a>
       </div>
     </div>
     <div class="product-card">
-      <div class="product-thumb c">💊</div>
-      <div class="product-body">
-        <span class="product-badge">Best supplement</span>
-        <p class="product-name">Zesty Paws Multivitamin Chews — Hip & Joint Support</p>
-        <p class="product-price">$29.97 <small>on Amazon</small></p>
-        <a href="#" class="product-cta">View on Amazon →</a>
-      </div>
-    </div>
-    <div class="product-card">
-      <div class="product-thumb d">🦷</div>
+      <div class="product-thumb c"><svg viewBox="0 0 64 64" width="62" height="62"><rect x="22" y="9" width="20" height="10" rx="3" fill="#E8754A"/><path d="M20 19 L44 19 L40 50 Q32 56 24 50 Z" fill="#EDF2FB" stroke="#E8754A" stroke-width="2.6"/><path d="M24 28 Q32 24 40 28" stroke="#E8754A" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M25 37 Q32 33.5 39 37" stroke="#E8754A" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></div>
       <div class="product-body">
         <span class="product-badge">Best dental</span>
-        <p class="product-name">Virbac Enzymatic Dog Toothpaste — Dual-Enzyme Formula</p>
+        <p class="product-name">Dual-Enzyme Poultry-Flavor Dog Toothpaste</p>
         <p class="product-price">$12.95 <small>on Amazon</small></p>
-        <a href="#" class="product-cta">View on Amazon →</a>
+        <a href="https://amzn.to/4w3yLXD" target="_blank" rel="nofollow sponsored noopener" class="product-cta">View on Amazon →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-thumb d"><svg viewBox="0 0 64 64" width="62" height="62"><circle cx="32" cy="32" r="14" fill="#E8754A"/><path d="M18 32 C10 28 6 20 9 14" stroke="#E8754A" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M46 32 C54 28 58 20 55 14" stroke="#E8754A" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M18 32 C10 36 6 44 9 50" stroke="#E8754A" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M46 32 C54 36 58 44 55 50" stroke="#E8754A" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div>
+      <div class="product-body">
+        <span class="product-badge">Most versatile</span>
+        <p class="product-name">Reinforced Rubber Ball with Rope Ends</p>
+        <p class="product-price">$13.99 <small>on Amazon</small></p>
+        <a href="https://amzn.to/4gypWkc" target="_blank" rel="nofollow sponsored noopener" class="product-cta">View on Amazon →</a>
       </div>
     </div>
   </div>
@@ -793,8 +937,8 @@
         <ul>
           <li><a href="#">Dog products</a></li>
           <li><a href="#">Cat products</a></li>
-          <li><a href="#">Grooming</a></li>
-          <li><a href="#">Toys</a></li>
+          <li><a href="best-dog-grooming-brushes-2026.html">Grooming</a></li>
+          <li><a href="indestructible-dog-toys-2026.html">Toys</a></li>
           <li><a href="#">Supplements</a></li>
           <li><a href="#">Gifts under $30</a></li>
         </ul>
